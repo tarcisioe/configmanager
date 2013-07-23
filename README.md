@@ -26,8 +26,8 @@ Usage is simple:
 
     ./register.sh <file> <storage name>
     
-*register.sh* will then move <file> to the *files* directory inside the directory where you installed, under
-<storage name>, create a link to the stored file and then register it on the mapping.
+*register.sh* will then move *file* to the *files* directory inside the directory where you installed, under
+*storage name*, create a link to the stored file and then register it on the mapping.
 
 Note: files under your homedir will have your $HOME substituted by ~. The other scripts deal with that. This
 way, you can use this independently of username.
