@@ -45,7 +45,7 @@ on getting everything always synced.).
 
 Run *migrate.sh*:
 
-    migrate.sh
+    ./migrate.sh
     
 It takes no arguments. It will migrate any file registered on the mapping by removing it and linking it back with
 the version stored.
@@ -57,13 +57,13 @@ files that are mapped but don't yet exist.
 
 Usage is just:
 
-    link.sh
+    ./link.sh
     
 ## Undoing
 
 Just run *undo.sh*
 
-   undo.sh
+   ./undo.sh
    
 It will replace every mapped file with the version stored.
 
@@ -72,4 +72,4 @@ It will replace every mapped file with the version stored.
 If this repository is updated, just run *update.sh* pointing at your installation directory. It will replace every
 script with the new version.
 
-   update.sh [optional directory]
+   bash update.sh [optional directory]
