@@ -32,6 +32,9 @@ Usage is simple:
 Note: files under your homedir will have your $HOME substituted by ~. The other scripts deal with that. This
 way, you can use this independently of username.
 
+IMPORTANT: Filenames with spaces are basically guaranteed not to work. Configuration files don't normally have
+spaces in their names, though. Also, no file should. Really.
+
 When done, you can then put the directory under version control and send it to a remote repository. (Github is quite
 cool!)
 
