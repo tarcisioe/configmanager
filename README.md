@@ -14,7 +14,7 @@ Installing can easily be done by cloning the repository and running the install 
 The **optional directory** will be created by *install.sh* and must not exist before (If the directory already exists,
 *install.sh* will refuse to install.).
 
-If the directory is omitted, *install.sh* installs to `~/.gitconfigs/`.
+If the directory is omitted, *install.sh* installs to `~/.configmanager/`.
 
 # Using
 
