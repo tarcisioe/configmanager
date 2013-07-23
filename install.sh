@@ -1,7 +1,7 @@
 #!/bin/bash
 
 THISDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOTDIR="${HOME}/.gitconfigs"
+ROOTDIR="${HOME}/.configmanager"
 
 if [ "$1" ]
 then
