@@ -63,7 +63,7 @@ Usage is just:
 
 Just run *undo.sh*
 
-   ./undo.sh
+    ./undo.sh
    
 It will replace every mapped file with the version stored.
 
@@ -72,4 +72,6 @@ It will replace every mapped file with the version stored.
 If this repository is updated, just run *update.sh* pointing at your installation directory. It will replace every
 script with the new version.
 
-   bash update.sh [optional directory]
+    bash update.sh [optional directory]
+    
+If your directory is under VCS, don't forget to commit :).
