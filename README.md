@@ -1,8 +1,8 @@
 configmanager
 =============
 
-A nice set of scripts for managing and sharing configuration files under VCS
-between multiple Linux user accounts and systems.
+A nice set of scripts for managing and sharing user configuration files under
+VCS between multiple Linux user accounts and systems.
 
 # Installing
 
