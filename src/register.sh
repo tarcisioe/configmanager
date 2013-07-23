@@ -28,6 +28,7 @@ then
 fi
 
 realpath="$(readlink -f $1)"
+[[ "$realpath" =~ ^"$HOME"(/|$) ]] && realpath="~${realpath#$HOME}"
 
 mv "$1" "$newpath"
 ln -s "$newpath" "$1"

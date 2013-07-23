@@ -15,6 +15,8 @@ do
 
     src="${CONFIGSROOT}/files/${src}"
 
+    eval dest=$dest
+
     rm $dest
     cp $src $dest
 

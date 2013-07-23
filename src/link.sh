@@ -13,6 +13,7 @@ do
 
     read dest src <<< $line
 
+    eval dest=$dest
     src="${CONFIGSROOT}/files/${src}"
     dir="$(dirname "$dest")"
 
