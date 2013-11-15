@@ -18,7 +18,7 @@ do
 
     if [ -e "$dest" -a ! -h "$dest" ]
     then
-        rm "$dest"
+        rm -r "$dest"
         ln -s "$src" "$dest"
     fi
 

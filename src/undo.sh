@@ -18,7 +18,7 @@ do
     eval dest=$dest
 
     rm $dest
-    cp $src $dest
+    cp -r $src $dest
 
     IFS="${NIFS}"
 done
