@@ -24,7 +24,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-CONFIGSROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CONFIGSROOT="$(cd "$(dirname "$0")" && pwd)"
 
 if [ ! "$1" -a "$2" ]
 then
