@@ -23,26 +23,13 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 CONFIGSROOT="$(cd "$(dirname "$0")" && pwd)"
 
-OIFS="$IFS"
-NIFS=$'\n'
+source "${CONFIGSROOT}"/core.sh
 
-IFS="$NIFS"
-
-for line in $(cat mapping)
-do
-    IFS="${OIFS}"
-
-    read dest src <<< ${line}
-
-    src="${CONFIGSROOT}/files/${src}"
-
-    eval dest=$dest
-
-    rm $dest
+undo() {
+    rm "$dest"
     cp -r $src $dest
+}
 
-    IFS="${NIFS}"
-done
+callonmapping undo

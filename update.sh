@@ -24,7 +24,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-THISDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+THISDIR="$(cd "$(dirname "$0")" && pwd)"
 ROOTDIR="${HOME}/.configmanager"
 
 if [ "$1" ]

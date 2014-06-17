@@ -23,8 +23,9 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 CONFIGSROOT="$(cd "$(dirname "$0")" && pwd)"
+
+source "$CONFIGSROOT"/core.sh
 
 if [ ! "$1" -a "$2" ]
 then
@@ -56,6 +57,8 @@ realpath="$(readlink -f $1)"
 
 mv "$1" "$newpath"
 ln -s "$newpath" "$1"
-echo "$realpath" "$2" >> "${CONFIGSROOT}/mapping"
-sort "${CONFIGSROOT}/mapping" >> "${CONFIGSROOT}/sorted"
-mv "${CONFIGSROOT}/sorted" "${CONFIGSROOT}/mapping"
+
+echo "$realpath" "$2" >> "$MAPPING"
+
+sort "$MAPPING" >> sorted
+mv sorted "$MAPPING"

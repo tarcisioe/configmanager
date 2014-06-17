@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright (c) 2013, Tarcísio E. M. Crocomo
 # All rights reserved.
 #
@@ -23,21 +22,38 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+CALLERROOT="$(cd "$(dirname "$0")" && pwd)"
 
-THISDIR="$(cd "$(dirname "$0")" && pwd)"
-ROOTDIR="${HOME}/.configmanager"
+MAPPING="${CALLERROOT}"/mapping
 
-if [ "$1" ]
-then
-    if [ -e "$1" ]
-    then
-        echo "$0: directory already exists"
-        exit
-    fi
+maptofile() {
+    # This function applies a command for every line of a file, passing the line's
+    # contents as arguments.
+    while read line
+    do
+        $1 ${line}
+    done < "$2"
 
-    ROOTDIR="$1"
-fi
+    unset line
+}
 
-mkdir -p "$ROOTDIR/files"
-touch "$ROOTDIR/mapping"
-cp "$THISDIR/src"/*.sh "$ROOTDIR/"
+withsrcdest()
+{
+    # This function sets the variables "src" and "dest" according to the scripts
+    # needs and calls a command with them set, unsetting them afterwards.
+    args=( $@ )
+    len=${#args[@]}
+    command=${args[0]}
+    read dest src <<< ${args[@]:1:$len}
+    eval dest=$dest
+    src="${CALLERROOT}/files/$src"
+
+    $command
+
+    unset args len command src dest
+}
+
+callonmapping()
+{
+    maptofile "withsrcdest $1" "$MAPPING"
+}
