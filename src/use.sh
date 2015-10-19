@@ -1,5 +1,4 @@
-#!/bin/bash
-# Copyright (c) 2013, Tarcísio E. M. Crocomo
+# Copyright (c) 2015, Tarcísio E. M. Crocomo
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -25,37 +24,25 @@
 
 CONFIGSROOT="$(cd "$(dirname "$0")" && pwd)"
 
-source "$CONFIGSROOT"/core.sh
+source "${CONFIGSROOT}"/link.sh
 
-if [ ! "$1" -a "$2" ]
+if [ "$#" == 0 ]
 then
     fail "$0: wrong number of arguments"
 fi
 
-if [ ! -e "$1" ]
-then
-    fail "$0: file '$1' does not exist"
-fi
+use() {
+    map=$(grep "$1" "${MAPPING}")
 
-if [ -h "$1" ]
-then
-    fail "$0: file '$1' is already a symbolic link"
-fi
+    if [[ $(echo "${map}" | wc -l) != 1 ]]
+    then
+        fail "$0: more than one possibility found for '$1', aborting"
+    fi
 
-newpath="${CONFIGSROOT}/files/$2"
+    withsrcdest link "${map}"
+}
 
-if [ -e "$newpath" ]
-then
-    fail "$0: file '$2' already exists"
-fi
-
-realpath="$(readlink -f $1)"
-[[ "$realpath" =~ ^"$HOME"(/|$) ]] && realpath="~${realpath#$HOME}"
-
-mv "$1" "$newpath"
-ln -s "$newpath" "$1"
-
-echo "$realpath" "$2" >> "$MAPPING"
-
-sort "$MAPPING" >> sorted
-mv sorted "$MAPPING"
+for arg in $@
+do
+    use "$arg"
+done

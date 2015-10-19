@@ -43,4 +43,7 @@ link()
     unset dir
 }
 
-callonmapping link
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+then
+    callonmapping link
+fi

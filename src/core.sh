@@ -26,6 +26,11 @@ CALLERROOT="$(cd "$(dirname "$0")" && pwd)"
 
 MAPPING="${CALLERROOT}"/mapping
 
+fail() {
+    echo "$@" 1>&2
+    exit -1
+}
+
 maptofile() {
     # This function applies a command for every line of a file, passing the line's
     # contents as arguments.
